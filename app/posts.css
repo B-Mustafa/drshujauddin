@@ -1,0 +1,114 @@
+:root {
+  --color-1: var(--heading-color);
+  --color-2: #2c2c2c;
+  --color-3: var(--font-color);
+  --color-4: #17b6ff;
+  --color-5: rgb(200, 200, 200);
+  --font-family-1: "firecode", sans-serif;
+  --background-color-1: rgb(33, 34, 37);
+}
+
+
+.content {
+  color: var(--font-color);
+  line-height: 1.6;
+  word-wrap: break-word;
+  border-radius: 12px;
+  cursor: auto !important;
+  font-size: 1.05rem !important;
+}
+.content p {
+  color: var(--font-color);
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+.content h1 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.9rem;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content h4 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content h5 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content h6 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: var(--font-color);
+}
+.content a {
+  color: #17b6ff;
+  text-decoration: none;
+}
+.content a:hover {
+  text-decoration: underline;
+}
+.content strong {
+  font-weight: bold;
+}
+.content em {
+  font-style: italic;
+}
+.content ul {
+  margin-left: 20px;
+}
+.content ol {
+  margin-left: 20px;
+}
+.content li {
+  margin-bottom: 10px;
+}
+.content code {
+  font-family: "firecode", sans-serif;
+  background-color: #0a0a0a ab;
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  margin: 0.3rem;
+  font-size: 14px;
+  color: white;
+}
+.content pre {
+  background-color: #080808 cc;
+  backdrop-filter: blur(10px);
+  border: 2px solid #393939 12;
+  font-size: 15px;
+  padding: 1rem;
+  display: flex;
+  margin: 2rem 0;
+  border-radius: 2px;
+  color: #c8c8c8;
+  overflow-x: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+}
+.content pre code {
+  font-family: "firecode", sans-serif;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-weight: normal;
+  margin: 0;
+  color: #c8c8c8;
+}
