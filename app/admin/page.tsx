@@ -14,7 +14,7 @@ export default async function Dashboard() {
     const session: CustomSession | null = await getServerSession(authOptions);
 
     if (session == null || session?.user?.role != "Admin"){
-        return redirect("admin/login");
+        return redirect("admin/login?error=invalid-credentials");
     }
 
   return (

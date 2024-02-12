@@ -1,10 +1,24 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from '@/public/logo.png'
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import AppointmentModal from "@/components/Modal";
 
 export default function Home() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <section className="flex flex-col items-center  justify-center mt-5 bg-[#DEE4E7] w-full overflow-hidden h-screen">
@@ -23,9 +37,11 @@ export default function Home() {
 
           <div className="links flex  ">
             <a href="#Appointment">
-              <Button className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]">
+              {/* <Button className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]">
                 Book an Appointment
-              </Button>
+              </Button> */}
+               <button onClick={openModal} className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]">Book an Appointment</button>
+                <AppointmentModal isOpen={isModalOpen} onRequestClose={closeModal} />
             </a>
             
           </div>
