@@ -38,12 +38,35 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+    
+      try {
+        const updatedFormData = {
+          ...formData,
+          email: formData.email, // Include email from the form
+        };
+    
+        const response = await fetch('/api/sendEmail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedFormData),
+        });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log('Email sent:', data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  
     // Reset form data
     setFormData({
       firstName: '',
@@ -58,6 +81,7 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
     // Close the modal
     onRequestClose();
   };
+  
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="fixed inset-0 flex justify-center items-center z-10">
@@ -147,7 +171,7 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
             rows={4}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           />
-          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Book Appointment</button>
+          <button  type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Book Appointment</button>
         </form>
       </div>
     </Modal>

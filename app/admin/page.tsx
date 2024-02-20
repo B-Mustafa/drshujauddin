@@ -16,6 +16,7 @@ export default async function Dashboard() {
     if (session == null || session?.user?.role != "Admin"){
         return redirect("admin/login?error=invalid-credentials");
     }
+    
 
   return (
     <div>

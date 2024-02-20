@@ -13,7 +13,7 @@ function Navbar() {
         setMenuOpen(!MenuOpen)
     }
     useEffect(() => {
-        const handleKeyPress = (e) => {
+        const handleKeyPress = (e: any) => {
           if (e.key === "Escape") {
             handleNav();
           }
