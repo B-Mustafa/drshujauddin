@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+// setting up mongoose here for storing in database
+
+import mongoose from 'mongoose';
+import { connect } from '../../../database/mongo.config'
+import Appointment from '@/model/Appointment';
+
 export async function POST(request: Request) {
     if (request.method === "POST") {
+
+        //connect mongoose
+        await connect();
+
         const resend = new Resend(process.env.RESEND_API_KEY);
         
         try {
@@ -28,6 +38,10 @@ export async function POST(request: Request) {
                 subject: 'Appointment Confirmation',
                 html: emailHTML // Use the manually constructed HTML string
             });
+
+            const newAppointment = new Appointment(body);
+            await newAppointment.save();
+
             return NextResponse.json({ data });
         } catch (error: any) {
             return NextResponse.json({ error: error.message });

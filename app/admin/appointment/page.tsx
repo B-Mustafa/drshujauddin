@@ -1,52 +1,40 @@
 "use client"
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { IAppointment } from '../../../model/Appointment'; // Adjust the import path as necessary
 
-// Define the type for an appointment
-interface AppointmentData {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  age: string;
-  gender: string;
-  email: string;
-  phoneNumber: string;
-  appointmentDate: string;
-  complaints: string;
-}
-
-const Appointment = () => {
-  // Use the AppointmentData interface to type the appointments state
-  const [appointments, setAppointments] = useState<AppointmentData[]>([]);
+const AppointmentsPage: React.FC = () => {
+  const [appointments, setAppointments] = useState<IAppointment[]>([]);
 
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await fetch('/api/appointments/create');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setAppointments(data);
-      } catch (error) {
-        console.error('Error fetching appointments:', error);
-      }
-    };
-
+    // Fetch appointments from your API
     fetchAppointments();
   }, []);
 
+  const fetchAppointments = async () => {
+    try {
+      const response = await fetch('/api/appointments');
+      const data: IAppointment[] = await response.json();
+      setAppointments(data);
+    } catch (error) {
+      console.error('Error fetching appointments:', error);
+    }
+  };
+
   return (
-    <div>
-      {appointments.map((appointment) => (
-        <div key={appointment._id} className="card">
-          <h2>{appointment.firstName} {appointment.lastName}</h2>
-          <p>Email: {appointment.email}</p>
-          <p>Appointment Date: {appointment.appointmentDate}</p>
-          {/* Add more fields as needed */}
-        </div>
-      ))}
+    <div className="container mx-auto px-4">
+      <h1 className="text-2xl font-bold mb-4">Appointments</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {appointments.map((appointment) => (
+          <div key={appointment._id} className="bg-white rounded-lg shadow p-4">
+            <h2 className="text-xl font-semibold mb-2">{appointment.firstName} {appointment.lastName}</h2>
+            <p className="text-gray-600">{appointment.email}</p>
+            <p className="text-gray-600">{appointment.appointmentDate}</p>
+            {/* Add more details as needed */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default Appointment;
+export default AppointmentsPage;
