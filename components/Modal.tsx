@@ -1,3 +1,5 @@
+
+// import { useRouter } from 'next/router';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Modal from 'react-modal';
 
@@ -15,9 +17,12 @@ interface FormData {
 interface AppointmentModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
+
 }
 
 function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
+  // const router = useRouter();
+
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -28,6 +33,7 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
     appointmentDate: '',
     complaints: '',
   });
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -42,11 +48,27 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+
+      
+
+      // router.push({
+      //   pathname: '/EmailTemplate',
+      //   query: {
+      //     firstName: formData.firstName,
+      //     lastName: formData.lastName,
+      //     email: formData.email,
+      //     age: formData.age,
+      //     gender: formData.gender,
+      //     phoneNumber: formData.phoneNumber,
+      //     appointmentDate: formData.appointmentDate,
+      //     complaints: formData.complaints,
+      //   },
+      // });
     
       try {
         const updatedFormData = {
           ...formData,
-          email: formData.email, // Include email from the form
+          email: formData.email, 
         };
     
         const response = await fetch('/api/sendEmail', {

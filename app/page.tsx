@@ -6,8 +6,11 @@ import Logo from '@/public/logo.png'
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import AppointmentModal from "@/components/Modal";
+// import { useRouter } from "next/router";
 
 export default function Home() {
+
+  // const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,11 +40,9 @@ export default function Home() {
 
           <div className="links flex  ">
             <a href="#Appointment">
-              {/* <Button className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]">
-                Book an Appointment
-              </Button> */}
+              
                <button onClick={openModal} className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]">Book an Appointment</button>
-                <AppointmentModal isOpen={isModalOpen} onRequestClose={closeModal} />
+                <AppointmentModal isOpen={isModalOpen} onRequestClose={closeModal}  />
             </a>
             
           </div>
