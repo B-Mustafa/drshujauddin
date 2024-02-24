@@ -13,7 +13,7 @@ export async function middleware(request:NextRequest){
 
     // * Protected routes 
 
-    const adminProtectedRoutes = ["/admin"];
+    const adminProtectedRoutes = ["/admin" , "/admin/appointment"]; 
 
     if(token == null && adminProtectedRoutes.includes(pathname)){
         return NextResponse.redirect(new URL("/admin/login?error=Login-to-access" , request.url))
