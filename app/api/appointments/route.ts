@@ -1,17 +1,31 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { connect } from '../../../database/mongo.config'; // Adjust the path as necessary
-import Appointment from '../../../model/Appointment'; // Adjust the path as necessary
-import { NextResponse } from 'next/server';
+import { connect } from '../../../database/mongo.config';
+import Appointment from '@/model/Appointment';
+import { NextResponse } from 'next/server'; 
 
-export  async function GET(request : Request) {
-  if (request.method === 'GET') {
-    await connect(); // Connect to MongoDB
 
-    try {
-      const appointments = await Appointment.find({});
-      NextResponse.json(appointments);
-    } catch (error: unknown) {
-      console.log(error)
-    }
-}
+export async function GET() {
+  try {
+    
+    await connect();
+
+    
+    const appointments = await Appointment.find({});
+
+    
+    return new NextResponse(JSON.stringify(appointments), {
+      status:  200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching appointments:', error);
+    
+    return new NextResponse(JSON.stringify({ error: 'Error fetching appointments' }), {
+      status:  500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
