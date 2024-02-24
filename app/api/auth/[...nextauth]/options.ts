@@ -43,7 +43,12 @@ export const authOptions:AuthOptions = {
 
 
                 if(user){
-                    return user;
+                    return {
+                        id: user._id.toString(), // Convert ObjectId to string
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
+                    };
                 }
                 else{
                     return null;
