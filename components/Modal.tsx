@@ -1,6 +1,7 @@
 
 // import { useRouter } from 'next/router';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import toast from 'react-hot-toast';
 import Modal from 'react-modal';
 
 interface FormData {
@@ -48,22 +49,6 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-
-      
-
-      // router.push({
-      //   pathname: '/EmailTemplate',
-      //   query: {
-      //     firstName: formData.firstName,
-      //     lastName: formData.lastName,
-      //     email: formData.email,
-      //     age: formData.age,
-      //     gender: formData.gender,
-      //     phoneNumber: formData.phoneNumber,
-      //     appointmentDate: formData.appointmentDate,
-      //     complaints: formData.complaints,
-      //   },
-      // });
     
       try {
         const updatedFormData = {
@@ -88,7 +73,7 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
     } catch (error) {
       console.error('Error:', error);
     }
-  
+    toast.success('Appointment form submitted successfully!');
     // Reset form data
     setFormData({
       firstName: '',

@@ -9,6 +9,11 @@ export interface IAppointment extends Document {
   phoneNumber: string;
   appointmentDate: string;
   complaints: string;
+  status: {
+    type: String,
+    enum: ['pending', 'accepted', 'declined'],
+    default: 'pending',
+  },
 }
 
 const appointmentSchema = new Schema({
