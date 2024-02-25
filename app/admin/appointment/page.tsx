@@ -146,7 +146,7 @@ const AppointmentsPage: React.FC = () => {
           ))}
         </div>
       ) : (
-        redirect("/admin/login")
+        <p>You are not authenticated</p>
       )}
     </div>
   );
