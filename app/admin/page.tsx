@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth'
 
 import { redirect } from 'next/navigation';
 import SignOutButton from '@/components/SignOutButton'
+import Navbar from '@/components/Navbar';
 
 
 export default async function Dashboard() {
@@ -19,10 +20,14 @@ export default async function Dashboard() {
     
 
   return (
+    <>
+    <Navbar isAdminRoute={true}/>
+
     <div>
       Hello Sujauddin Welcome to Dashboard
       <SignOutButton/>
     </div>
+    </>
   )
 }
 

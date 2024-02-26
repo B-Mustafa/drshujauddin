@@ -6,6 +6,7 @@ import Logo from '@/public/logo.png'
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import AppointmentModal from "@/components/Modal";
+import Navbar from "@/components/Navbar";
 // import { useRouter } from "next/router";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
 
   return (
     <>
+    <Navbar isAdminRoute={false}/>
       <section className="flex flex-col items-center  justify-center mt-5 bg-[#DEE4E7] w-full overflow-hidden h-screen">
       <div className="  flex items-center justify-between max-w-7xl py-5  px-5">
         <div className="hero-content">

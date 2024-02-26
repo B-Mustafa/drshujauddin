@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { IAppointment } from '../../../model/Appointment'; // Adjust the import path as necessary
+import { IAppointment } from '../../../model/Appointment'; 
 import { getSession } from 'next-auth/react';
 
 import { CustomSession } from '@/app/api/auth/[...nextauth]/options';
 import toast from 'react-hot-toast';
-import { redirect } from 'next/navigation';
+import Navbar from '@/components/Navbar';
 
 const AppointmentsPage: React.FC = () => {
   const [appointments, setAppointments] = useState<IAppointment[]>([]);
@@ -104,6 +104,8 @@ const AppointmentsPage: React.FC = () => {
   };
 
   return (
+    <>
+    <Navbar isAdminRoute={true}/>
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-4">Appointments</h1>
       {isAuthenticated ? (
@@ -149,6 +151,7 @@ const AppointmentsPage: React.FC = () => {
         <p>You are not authenticated</p>
       )}
     </div>
+    </>
   );
 };
 
