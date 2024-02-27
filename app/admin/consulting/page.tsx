@@ -1,5 +1,6 @@
 "use client"
 import { CustomSession } from '@/app/api/auth/[...nextauth]/options';
+import ConsultingForm from '@/components/ConsultingForm';
 import Navbar from '@/components/Navbar';
 import { getSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
@@ -27,10 +28,10 @@ function Consulting() {
 
   return (
     <>
-      <Navbar isAdminRoute={true} />
+      
       {isAuthenticated ? (
         <div>
-          Consulting Forms will be here !!
+          <ConsultingForm />
         </div>
       ) : (
         <div>

@@ -105,7 +105,7 @@ const AppointmentsPage: React.FC = () => {
 
   return (
     <>
-    <Navbar isAdminRoute={true}/>
+    {/* <Navbar isAdminRoute={true}/> */}
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-4">Appointments</h1>
       {isAuthenticated ? (

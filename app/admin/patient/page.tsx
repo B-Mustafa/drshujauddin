@@ -27,7 +27,7 @@ function Patients() {
 
   return (
     <>
-      <Navbar isAdminRoute={true} />
+      {/* <Navbar isAdminRoute={true} /> */}
       {isAuthenticated ? (
         <div>
           Patients Data Loads Here!

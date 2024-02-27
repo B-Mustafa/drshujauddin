@@ -21,7 +21,7 @@ export default async function Dashboard() {
 
   return (
     <>
-    <Navbar isAdminRoute={true}/>
+    {/* <Navbar isAdminRoute={true}/> */}
 
     <div>
       Hello Sujauddin Welcome to Dashboard
