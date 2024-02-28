@@ -12,7 +12,7 @@ const ConsultingForm = () => {
     email: '',
     complaints: '',
     prescription: '',
-    consultingDate: '', // Corrected property name
+    consultingDate: '', 
   });
 
   useEffect(() => {
