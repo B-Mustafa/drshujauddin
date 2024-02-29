@@ -29,8 +29,8 @@ export default function Home() {
     <>
       <Navbar isAdminRoute={false} /> 
 
-      <section className="flex flex-col items-center  justify-center mt-5 bg-[#DEE4E7] w-full overflow-hidden h-screen">
-        <div className="  flex items-center justify-between max-w-7xl py-5  px-5">
+      <section className="hero-container flex  items-center  justify-center mt-5 bg-[#DEE4E7] w-full overflow-hidden h-screen">
+        <div className="hero-content-container flex items-center justify-between max-w-7xl w-full  py-5  px-5">
           <div className="hero-content">
             <div className="text text-left">
               <h1 className="text-4xl text-[#333]  "> Homeopathy Made Easy </h1>
@@ -52,7 +52,7 @@ export default function Home() {
                   onClick={openModal}
                   className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]"
                 >
-                  Book an Appointment
+                  Book Appointment
                 </button>
                 <AppointmentModal
                   isOpen={isModalOpen}

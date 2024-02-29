@@ -69,6 +69,13 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
+
+::-webkit-scrollbar{
+  width: 30px;
+  border-radius: 10px;
+  color: #DEE4E7;
+}
+
  
 @layer base {
   * {
@@ -76,6 +83,34 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hero-content-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+  img.z-10{
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  img.z-10 {
+    width: 180px;
+    height: 250px;
+  }
+  
+}
+
+@media (max-width:600px){
+  .container2{
+    display: flex;
+    flex-direction: column;
+  }
+  .copyright{
+    padding-left: 10px;
   }
 }
 

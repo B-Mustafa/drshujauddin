@@ -65,7 +65,7 @@ const ConsultingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto">
       <div className="mb-4">
         <input 
           name="firstName" 

@@ -202,7 +202,7 @@ function Patients() {
           )}
           {editIndex !== -1 && (
             <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex justify-center items-center">
-              <div className="bg-white p-4 rounded-lg">
+              <div className="bg-white p-4 rounded-lg max-w-lg max-h-full overflow-auto">
                 {/* Edit form fields */}
                 <h2 className="text-xl font-bold mb-2">Edit Patient</h2>
                 <label className="block mb-2">
