@@ -25,6 +25,19 @@ function Patients() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loadedDataCount, setLoadedDataCount] = useState<number>(9);
   const [editIndex, setEditIndex] = useState<number>(-1);
+  const [deleteIndex , setDeleteIndex] = useState<number>(-1);
+  const [deleteFormData , setDeleteFormData] = useState<consultingData>({
+    _id: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    age: '',
+    phoneNumber: '',
+    email: '',
+    complaints: '',
+    prescription: '',
+    consultingDate: '',
+  })
   const [editFormData, setEditFormData] = useState<ConsultingData>({
     _id: '',
     firstName: '',
@@ -86,6 +99,34 @@ function Patients() {
     setEditFormData({ ...filteredConsultingData[index] });
   };
 
+  const handleDelete = async (index: number) => {
+    try {
+       // Get the ID of the item to delete
+       const idToDelete = consultingData[index]._id;
+   
+       // Send a DELETE request to the server
+       const response = await fetch(`/api/deletePatient?id=${idToDelete}`, {
+         method: 'DELETE',
+       });
+   
+       // Check if the request was successful
+       if (!response.ok) {
+         throw new Error('Failed to delete patient data');
+       }
+   
+       // If successful, remove the item from the local state
+       const updatedConsultingData = consultingData.filter((_, i) => i !== index);
+       setConsultingData(updatedConsultingData);
+   
+       // Optionally, show a success message
+       toast.success("Record deleted successfully!");
+    } catch (error) {
+       console.error('Error deleting patient data:', error);
+       // Optionally, show an error message
+       toast.error("An error occurred while deleting the record.");
+    }
+   };
+
   const handleUpdate = async () => {
     try {
       const response = await fetch(`/api/updatePatient?id=${consultingData[editIndex]._id}`, {
@@ -133,7 +174,7 @@ function Patients() {
             className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 mb-4"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredConsultingData.slice(0, loadedDataCount).map((consulting, index) => (
+              {filteredConsultingData.slice(0, loadedDataCount).map((consulting) => (
               <div key={index} className="border rounded p-4 w-full">
                 <h2 className="text-xl font-bold mb-2">{consulting.firstName} {consulting.lastName}</h2>
                 <p className="text-gray-600">Gender: {consulting.gender}</p>
@@ -145,6 +186,9 @@ function Patients() {
                 <p className="text-gray-600">Consulting Date: {consulting.consultingDate}</p>
                 <button onClick={() => handleEdit(index)} className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                   Edit
+                </button>
+                <button onClick={() => handleDelete(index)} className="mt-2 bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Delete Record
                 </button>
               </div>
             ))}
@@ -186,8 +230,16 @@ function Patients() {
                   <input type="text" value={editFormData.email } onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
+                  Consulting Date:
+                  <input type="text" value={editFormData.consultingDate } onChange={(e) => setEditFormData({ ...editFormData, consultingDate: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                </label>
+                <label className="block mb-2">
                   Complaints:
                   <input type="text" value={editFormData.complaints } onChange={(e) => setEditFormData({ ...editFormData, complaints: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                </label>
+                <label className="block mb-2">
+                  Prescription:
+                  <input type="text" value={editFormData.prescription } onChange={(e) => setEditFormData({ ...editFormData, prescription: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 
                 <div className="flex justify-between">
