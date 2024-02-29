@@ -26,7 +26,7 @@ function Patients() {
   const [loadedDataCount, setLoadedDataCount] = useState<number>(9);
   const [editIndex, setEditIndex] = useState<number>(-1);
   const [deleteIndex , setDeleteIndex] = useState<number>(-1);
-  const [deleteFormData , setDeleteFormData] = useState<consultingData>({
+  const [deleteFormData, setDeleteFormData] = useState<ConsultingData>({
     _id: '',
     firstName: '',
     lastName: '',
@@ -37,7 +37,7 @@ function Patients() {
     complaints: '',
     prescription: '',
     consultingDate: '',
-  })
+   });
   const [editFormData, setEditFormData] = useState<ConsultingData>({
     _id: '',
     firstName: '',
@@ -174,24 +174,24 @@ function Patients() {
             className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 mb-4"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredConsultingData.slice(0, loadedDataCount).map((consulting) => (
-              <div key={index} className="border rounded p-4 w-full">
-                <h2 className="text-xl font-bold mb-2">{consulting.firstName} {consulting.lastName}</h2>
-                <p className="text-gray-600">Gender: {consulting.gender}</p>
-                <p className="text-gray-600">Age: {consulting.age}</p>
-                <p className="text-gray-600">Phone Number: {consulting.phoneNumber}</p>
-                <p className="text-gray-600">Email: {consulting.email}</p>
-                <p className="text-gray-600">Complaints: {consulting.complaints}</p>
-                <p className="text-gray-600">Prescription: {consulting.prescription}</p>
-                <p className="text-gray-600">Consulting Date: {consulting.consultingDate}</p>
-                <button onClick={() => handleEdit(index)} className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                  Edit
-                </button>
-                <button onClick={() => handleDelete(index)} className="mt-2 bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                  Delete Record
-                </button>
-              </div>
-            ))}
+          {filteredConsultingData.slice(0, loadedDataCount).map((consulting, index) => (
+          <div key={index} className="border rounded p-4 w-full">
+              <h2 className="text-xl font-bold mb-2">{consulting.firstName} {consulting.lastName}</h2>
+              <p className="text-gray-600">Gender: {consulting.gender}</p>
+              <p className="text-gray-600">Age: {consulting.age}</p>
+              <p className="text-gray-600">Phone Number: {consulting.phoneNumber}</p>
+              <p className="text-gray-600">Email: {consulting.email}</p>
+              <p className="text-gray-600">Complaints: {consulting.complaints}</p>
+              <p className="text-gray-600">Prescription: {consulting.prescription}</p>
+              <p className="text-gray-600">Consulting Date: {consulting.consultingDate}</p>
+              <button onClick={() => handleEdit(index)} className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Edit
+              </button>
+              <button onClick={() => handleDelete(index)} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold ml-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Delete Record
+              </button>
+          </div>
+          ))}
           </div>
           {loadedDataCount < filteredConsultingData.length && (
             <div className="mt-4 text-center">
