@@ -23,7 +23,7 @@ class Testimonials extends Component<TestimonialsProps> {
             <h3>patient One</h3>
             <h4>Developer</h4>
             <p>
-                I've been seeing Dr. SHUJAUDDIN for my chronic headaches. Homeopathy has helped me significantly reduce the frequency and severity of my headaches. The treatments are natural and effective.
+            I&apos;ve been seeing Dr. SHUJAUDDIN for my chronic headaches. Homeopathy has helped me significantly reduce the frequency and severity of my headaches. The treatments are natural and effective.
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ class Testimonials extends Component<TestimonialsProps> {
             <h3>Patient Two</h3>
             <h4>Business Man</h4>
             <p>
-                Dr. Shujauddin's homeopathic remedies have been a game-changer for my allergies. I've noticed a marked improvement in my symptoms and have been able to avoid using antihistamines. It's a more holistic approach to health.
+            Dr. Shujauddin&apos;s homeopathic remedies have been a game-changer for my allergies. I&apos;ve noticed a marked improvement in my symptoms and have been able to avoid using antihistamines. It&apos;s a more holistic approach to health.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ class Testimonials extends Component<TestimonialsProps> {
             <h3>Patient 3</h3>
             <h4>Lawyer</h4>
             <p>
-              I got relieved completely from my back pain after consulting with Dr.Shujauddin 
+            I got relieved completely from my back pain after consulting with Dr.Shujauddin
             </p>
           </div>
         </div>
