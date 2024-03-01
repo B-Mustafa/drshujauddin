@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 import AppointmentModal from "@/components/Modal";
 import Navbar from "@/components/Navbar";
+import Testimonials from "@/components/Testimonials";
 
 
 
@@ -25,12 +26,13 @@ export default function Home() {
 
 
 
+
   return (
-    <>
+    <main className="bg-gray-100">
       <Navbar isAdminRoute={false} /> 
 
-      <section className="hero-container flex  items-center  justify-center mt-5 bg-[#DEE4E7] w-full overflow-hidden h-screen">
-        <div className="hero-content-container flex items-center justify-between max-w-7xl w-full  py-5  px-5">
+      <section className="hero-container flex  items-center  justify-center mt-5 bg-gray-100 w-full overflow-hidden h-screen">
+        <div className="hero-content-container flex items-center justify-between  w-full  py-5  px-5">
           <div className="hero-content">
             <div className="text text-left">
               <h1 className="text-4xl text-[#333]  "> Homeopathy Made Easy </h1>
@@ -70,7 +72,11 @@ export default function Home() {
           />
         </div>
       </section>
+      <section className="bg-gray-100 py-8">
+          <h2 className="text-2xl font-bold text-center mb-6">Testimonials</h2>
+          <Testimonials/>
+      </section>
       <Footer />
-    </>
+    </main>
   );
 }
