@@ -28,10 +28,10 @@ export default function Home() {
 
 
   return (
-    <main className="bg-gray-100">
+    <main className="bg-main-background">
       <Navbar isAdminRoute={false} /> 
 
-      <section className="hero-container flex  items-center  justify-center mt-5 bg-gray-100 w-full overflow-hidden h-screen">
+      <section className="hero-container flex  items-center  justify-center mt-5  w-full overflow-hidden h-screen">
         <div className="hero-content-container flex items-center justify-between  w-full  py-5  px-5">
           <div className="hero-content">
             <div className="text text-left">
@@ -52,7 +52,7 @@ export default function Home() {
               <a href="#Appointment">
                 <button
                   onClick={openModal}
-                  className="btn-main bg-[#333] text-white px-2 py-2 rounded text-center cursor-pointer hover:bg-[#222]"
+                  className="btn-main bg-main-primary text-white px-2 py-2 rounded text-center cursor-pointer "
                 >
                   Book Appointment
                 </button>
@@ -72,7 +72,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="bg-gray-100 py-8">
+      <section className=" py-8">
           <h2 className="text-2xl font-bold text-center mb-6">Testimonials</h2>
           <Testimonials/>
       </section>

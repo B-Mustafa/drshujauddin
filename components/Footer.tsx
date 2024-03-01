@@ -4,8 +4,8 @@ import React from 'react'
 function Footer() {
   return (
     <>
-      <footer className=' flex justify-center items-center bg-[#93939366] m-auto  p-[30px]  rounded-md'>
-        <p>&copy; Copyright <Link href={"https://github.com/B-Mustafa"} className='text-blue-600 mr-2 ml-2'>Mustafa Bhikhapurwala</Link>  2024</p>
+      <footer className=' flex justify-center items-center bg-main-accent m-auto  p-[30px]  rounded-md'>
+        <p className='text-white'>&copy; Copyright <Link href={"https://github.com/B-Mustafa"} className='text-white mr-2 ml-2'>Mustafa Bhikhapurwala</Link>  2024</p>
       </footer>
     </>
   )

@@ -24,6 +24,11 @@ const config = {
         'slab': ['Roboto Slab', 'serif'],
       },
       colors: {
+        'main-text': '#011608',
+        'main-background': '#f9fffb',
+        'main-primary': '#21f36d',
+        'main-secondary': '#76c8f7',
+        'main-accent': '#4c6ff5',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -8,6 +8,9 @@
  
 @layer base {
   :root {
+
+    
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -126,7 +129,6 @@
 }
 
 .carousel .slide {
-  background: rgb(243 244 246)!important;
   color: black;
   height: 100%;
 }
