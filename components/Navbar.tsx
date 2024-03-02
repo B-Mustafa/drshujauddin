@@ -60,12 +60,12 @@ function Navbar({ isAdminRoute }: NavbarProps) {
             </Link>
           </ul>
         </div>
-        <div onClick={handleNav} className='md:hidden cursor-pointer pl-24'>
+        <div onClick={handleNav} className='text-dark-text md:hidden cursor-pointer pl-24'>
           <AiOutlineMenu size={25} />
         </div>
       </div>
       <div
-        className={`fixed top-0 w-[65%] sm:hidden h-screen bg-[#ecf0f3] p-10 ease-in duration-500 ${
+        className={`fixed top-0 w-[65%] sm:hidden h-screen bg-dark-background text-dark-text p-10 ease-in duration-500 ${
           menuOpen ? 'left-0' : 'left-[-100%]'
         }`}
       >
