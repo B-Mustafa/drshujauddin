@@ -106,30 +106,30 @@ const AppointmentsPage: React.FC = () => {
   return (
     <>
     {/* <Navbar isAdminRoute={true}/> */}
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 bg-dark-background text-dark-text h-screen">
       <h1 className="text-2xl font-bold mb-4">Appointments</h1>
       {isAuthenticated ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {appointments.map((appointment) => (
-            <div key={appointment._id} className="bg-white rounded-lg shadow p-4">
+            <div key={appointment._id} className="bg-dark-background rounded-lg shadow p-4 border border-gray-300">
               <h2 className="text-xl font-semibold mb-2">
                 {' '}
                 {appointment.firstName} {appointment.lastName}
               </h2>
-              <p className="text-gray-600">
+              <p className="text-dark-text">
                 <span className="font-semibold">Email :</span> {appointment.email}
               </p>
-              <p className="text-gray-600">
+              <p className="text-dark-text">
                 <span className="font-semibold">Age :</span> {appointment.age}
               </p>
-              <p className="text-gray-600">
+              <p className="text-dark-text">
                 <span className="font-semibold">Gender :</span>
                 {appointment.gender}
               </p>
-              <p className="text-gray-600">
+              <p className="text-dark-text">
                 <span className="font-semibold">Date :</span> {appointment.appointmentDate}
               </p>
-              <p className="text-gray-600">
+              <p className="text-dark-text">
                 <span className="font-semibold">Complaints :</span> {appointment.complaints}
               </p>
               {appointmentActions[appointment._id] !== 'accept' && (

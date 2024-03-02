@@ -28,7 +28,7 @@ export default function ListItem({ posts }: Props) {
 
   return (
     <motion.div
-      className="dark:bg-gray-800 bg-[#d5dbdd] text-black dark:text-white p-7 shadow-md rounded mb-8 "
+      className=" bg-dark-background text-dark-text  p-7 shadow-md rounded mb-8 "
       variants={fadeInAnimationVariants}
       initial="initial"
       whileInView="animate"
@@ -41,8 +41,8 @@ export default function ListItem({ posts }: Props) {
       <Link href={`/blog/${id}`} className="text-2xl font-bold mb-4 block hover:underline">
          {title}
       </Link>
-      <p className="text-gray-700 dark:text-gray-400">Author: <span className='font-semibold'>{author}</span></p>
-      <p className="text-gray-700 dark:text-gray-400 text-xs">{FormattedDate}</p>
+      <p className="text-dark-text ">Author: <span className='font-semibold text-dark-text'>{author}</span></p>
+      <p className=" text-dark-text text-xs">{FormattedDate}</p>
         </li>
     </motion.div>
   );

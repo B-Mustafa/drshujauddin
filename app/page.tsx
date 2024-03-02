@@ -28,17 +28,17 @@ export default function Home() {
 
 
   return (
-    <main className="bg-main-background">
+    <main className="bg-dark-background">
       <Navbar isAdminRoute={false} /> 
 
       <section className="hero-container flex  items-center  justify-center mt-5  w-full overflow-hidden h-screen">
         <div className="hero-content-container flex items-center justify-between  w-full  py-5  px-5">
           <div className="hero-content">
             <div className="text text-left">
-              <h1 className="text-4xl text-[#333]  "> Homeopathy Made Easy </h1>
+              <h1 className="text-4xl text-dark-text  "> Homeopathy Made Easy </h1>
               {/* <span className="red-font text-3xl font-semibold text-red-600"></span>
             <h2 className="text-4xl text-[#333] "></h2> */}
-              <p className="p-text my-2 font-medium text-lg">
+              <p className="p-text my-2 font-medium text-lg text-dark-text">
                 We introduced online Homeopathic treatment through this website
                 !
                 <br />
@@ -52,7 +52,7 @@ export default function Home() {
               <a href="#Appointment">
                 <button
                   onClick={openModal}
-                  className="btn-main bg-main-primary text-white px-2 py-2 rounded text-center cursor-pointer "
+                  className="btn-main bg-dark-primary text-white px-2 py-2 rounded text-center cursor-pointer "
                 >
                   Book Appointment
                 </button>
@@ -72,8 +72,8 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className=" py-8">
-          <h2 className="text-2xl font-bold text-center mb-6">Testimonials</h2>
+      <section className="py-8">
+          <h2 className="text-2xl font-bold text-center mb-6 text-dark-text">Testimonials</h2>
           <Testimonials/>
       </section>
       <Footer />

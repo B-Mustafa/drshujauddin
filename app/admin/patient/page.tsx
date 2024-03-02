@@ -163,27 +163,29 @@ function Patients() {
     }
   };
  return (
-    <>
+    <main className='bg-dark-background text-dark-text h-screen'>
       {isAuthenticated ? (
+        
         <div className="p-5 mx-auto">
+          <h1 className='font-bold text-3xl mb-4'>Patients Data</h1>
           <input
             type="text"
             placeholder="Search patients"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 mb-4"
+            className="p-2 bg-dark-background border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 mb-4"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredConsultingData.slice(0, loadedDataCount).map((consulting, index) => (
           <div key={index} className="border rounded p-4 w-full">
               <h2 className="text-xl font-bold mb-2">{consulting.firstName} {consulting.lastName}</h2>
-              <p className="text-gray-600">Gender: {consulting.gender}</p>
-              <p className="text-gray-600">Age: {consulting.age}</p>
-              <p className="text-gray-600">Phone Number: {consulting.phoneNumber}</p>
-              <p className="text-gray-600">Email: {consulting.email}</p>
-              <p className="text-gray-600">Complaints: {consulting.complaints}</p>
-              <p className="text-gray-600">Prescription: {consulting.prescription}</p>
-              <p className="text-gray-600">Consulting Date: {consulting.consultingDate}</p>
+              <p className="text-dark-text">Gender: {consulting.gender}</p>
+              <p className="text-dark-text">Age: {consulting.age}</p>
+              <p className="text-dark-text">Phone Number: {consulting.phoneNumber}</p>
+              <p className="text-dark-text">Email: {consulting.email}</p>
+              <p className="text-dark-text">Complaints: {consulting.complaints}</p>
+              <p className="text-dark-text">Prescription: {consulting.prescription}</p>
+              <p className="text-dark-text">Consulting Date: {consulting.consultingDate}</p>
               <button onClick={() => handleEdit(index)} className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
               </button>
@@ -259,7 +261,7 @@ function Patients() {
           <p className="text-red-500">You are not authenticated. Please <a href="/admin/login" className="underline">log in</a> to access this page.</p>
         </div>
       )}
-    </>
+    </main>
  );
 }
 

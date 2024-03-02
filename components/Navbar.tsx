@@ -31,7 +31,7 @@ function Navbar({ isAdminRoute }: NavbarProps) {
   }, [handleNav, menuOpen]);
 
   return (
-    <nav className='sticky w-full h-24 shadow-xl bg-main-background'>
+    <nav className='sticky w-full h-24 shadow-[#fff] bg-dark-background'>
       <div className='flex justify-between items-center h-full w-full px-4 2xl:px-16 '>
         <div className='flex items-center p-3 text-xl '>
           <Link href={isAdminRoute ? '/admin' : '/'}>
@@ -44,7 +44,7 @@ function Navbar({ isAdminRoute }: NavbarProps) {
             />
           </Link>
         </div>
-        <div className='hidden sm:flex'>
+        <div className='hidden sm:flex text-dark-text'>
           <ul className='hidden sm:flex'>
             <Link href={isAdminRoute ? '/admin' : '/'}>
               <li className='ml-10 uppercase hover:border-b-2 text-xl'>Home</li>

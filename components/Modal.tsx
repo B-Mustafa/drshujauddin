@@ -91,15 +91,15 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
   
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="fixed inset-0 flex justify-center items-center z-10">
-      <div className="bg-white w-96 p-8 rounded-lg shadow-md">
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} className="fixed inset-0 flex justify-center items-center z-10 bg-dark-background text-dark-text">
+      <div className=" w-96 p-8 rounded-lg shadow-md">
         <button className="absolute top-4 right-4 text-gray-500" onClick={onRequestClose}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
         <h2 className="text-2xl font-semibold mb-4">Book an Appointment</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 bg-dark-background text-dark-text">
           <div className="flex space-x-4">
             <input
               type="text"
@@ -178,7 +178,7 @@ function AppointmentModal({ isOpen, onRequestClose }: AppointmentModalProps) {
             rows={4}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
           />
-          <button  type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Book Appointment</button>
+          <button  type="submit" className="bg-dark-secondary text-white py-2 px-4 rounded-lg hover:bg-dark-secondary transition duration-300">Book Appointment</button>
         </form>
       </div>
     </Modal>

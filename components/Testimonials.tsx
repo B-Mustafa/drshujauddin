@@ -16,6 +16,7 @@ class Testimonials extends Component<TestimonialsProps> {
         showStatus={false}
         autoPlay={true}
         interval={6100}
+        className="bg-dark-background text-dark-text"
       >
         <div>
           <Image src={Profile} alt="Patient One" />

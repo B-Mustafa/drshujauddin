@@ -65,7 +65,7 @@ const ConsultingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto">
+    <form onSubmit={handleSubmit} className="bg-dark-background shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto text-dark-text">
       <div className="mb-4">
         <input 
           name="firstName" 
@@ -73,7 +73,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="First Name" 
           required 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -83,7 +83,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Last Name" 
           required 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -92,7 +92,7 @@ const ConsultingForm = () => {
           value={formData.gender} 
           onChange={handleSelectChange} 
           required 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
         >
           <option value="">Select Gender</option>
           <option value="Male">Male</option>
@@ -108,7 +108,7 @@ const ConsultingForm = () => {
           placeholder="Age" 
           required 
           type="number" 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -118,7 +118,7 @@ const ConsultingForm = () => {
           onChange={handleChange}  
           type="text"  
           required  
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"  
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"  
           readOnly
         />
       </div>
@@ -129,7 +129,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Phone Number" 
           type="tel" 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -139,7 +139,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Email (optional)" 
           type="email" 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -149,7 +149,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Complaints" 
           required 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="mb-4">
@@ -159,7 +159,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Prescription" 
           required 
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>
       <div className="flex items-center justify-between">

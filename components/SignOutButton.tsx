@@ -7,7 +7,7 @@ const signOutButton = () => {
     <button onClick={() => signOut({
       callbackUrl: "/admin/login",
       redirect:true
-    })} className='flex-col p-2 bg-gray-600 text-white'>Sign out</button>
+    })} className='flex-col p-2 bg-dark-accent text-white'>Sign out</button>
   )
 }
 

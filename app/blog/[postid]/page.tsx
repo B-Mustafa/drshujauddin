@@ -23,10 +23,10 @@ export default async function Blog({ params }: { params: { postid: string } }) {
                 <title>{title}</title>
                 <meta name="description" content={`Published on ${pubDate}`} />
             </Head>
-            <main className="p-6 bg-[#DEE4E7] dark:bg-gray-900 h-screen overflow-auto content">
-                <h1 className="text-3xl font-bold mb-4">{title}</h1>
-                <p className="text-gray-500 dark:text-gray-400 mb-6">{pubDate}</p>
-                <article className="prose dark:prose-dark" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <main className="p-6 bg-dark-background  text-white h-screen overflow-auto content">
+                <h1 className="text-white text-3xl font-bold mb-4">{title}</h1>
+                <p className="text-white  mb-6">{pubDate}</p>
+                <article className="prose text-dark-text" dangerouslySetInnerHTML={{ __html: contentHtml }} />
                 <p className="mt-8">
                     <Link href="/blog" className="flex items-center text-blue-500 hover:underline bottom-0 relative mb-2 mt-3">
                         <ArrowLeft className="mr-2" />

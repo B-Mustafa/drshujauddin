@@ -25,7 +25,7 @@ const About: React.FC = () => {
  return (
     <>
       <Navbar isAdminRoute={false} />
-      <div className="flex flex-col items-center justify-center min-h-screen bg-main-background py-2">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-dark-background text-dark-text py-2">
         <Head>
           <title>About Us - Dr. Shujauddin</title>
           <link rel="icon" href="/favicon.ico" />
@@ -43,29 +43,29 @@ const About: React.FC = () => {
           <div className="flex flex-wrap justify-center items-center mt-6">
             <div className="flex flex-col items-center justify-center m-2">
               <Image src={Profile} alt="Dr. Shujauddin" className="w-64 h-64 object-cover rounded-lg shadow-lg" />
-              <h2 className="text-2xl font-semibold text-gray-700 mt-4">
+              <h2 className="text-2xl font-semibold  mt-4">
                 Dr. Shujauddin Bhikhapurwala
               </h2>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg ">
                 Homeopathic Doctor
               </p>
             </div>
             <div className="flex flex-col justify-center items-start m-2">
               <div className="flex flex-col items-start">
                 <div>
-                <p className="text-lg text-gray-700">Phone: +1234567890</p>
+                <p className="text-lg ">Phone: +1234567890</p>
                 </div>
                 <div>
-                <p className="text-lg text-gray-700">Email: bhikhapurwalasujauddin@gmail.com</p>
+                <p className="text-lg ">Email: bhikhapurwalasujauddin@gmail.com</p>
                 </div>
                 <div>
-                <p className="text-lg text-gray-700">Address: 123 Homeopathy Street, Homeopathy City, HP 12345</p>
+                <p className="text-lg ">Address: 123 Homeopathy Street, Homeopathy City, HP 12345</p>
                 </div>
               </div>
               <a href="#Appointment">
                 <button
                   onClick={openModal}
-                  className="btn-main bg-main-primary hover:bg-main-secondary text-white px-2 py-2 rounded text-center cursor-pointer "
+                  className="btn-main bg-dark-primary hover:bg-dark-secondary text-white px-2 py-2 rounded text-center cursor-pointer "
                 >
                   Book Appointment
                 </button>
@@ -79,8 +79,8 @@ const About: React.FC = () => {
 
           {/* About Dr. Shujauddin */}
           <div className="mt-10">
-            <h2 className="text-2xl font-semibold text-gray-700">About Dr. Shujauddin</h2>
-            <p className="text-lg text-gray-700 mt-4">
+            <h2 className="text-2xl font-semibold ">About Dr. Shujauddin</h2>
+            <p className="text-lg  mt-4">
               Dr. Shujauddin is a renowned homeopathic doctor with over 15 years of experience in the field. He specializes in treating a wide range of conditions using homeopathic remedies. Dr. Shujauddin believes in the healing power of nature and is dedicated to providing personalized care to his patients.
             </p>
           </div>

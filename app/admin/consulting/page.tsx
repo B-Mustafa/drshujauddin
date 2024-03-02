@@ -27,7 +27,7 @@ function Consulting() {
   };
 
   return (
-    <>
+    <main className='bg-dark-background text-dark-text h-screen'>
       
       {isAuthenticated ? (
         <div>
@@ -38,7 +38,7 @@ function Consulting() {
           <p>You are not authenticated. Please <a href="/login">log in</a> to access this page.</p>
         </div>
       )}
-    </>
+    </main>
   );
 }
 
