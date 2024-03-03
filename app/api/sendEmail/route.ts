@@ -33,6 +33,7 @@ export async function POST(request: NextRequest) {
                     <p>Gender: ${body.gender}</p>
                     <p>Phone Number: ${body.phoneNumber}</p>
                     <p>Appointment Date: ${body.appointmentDate}</p>
+                    <p>Appointment Date: ${body.appointmentTime}</p>
                     <p>Complaints: ${body.complaints}</p>
                 `;
             } else if (body.action === 'decline') {
@@ -47,6 +48,7 @@ export async function POST(request: NextRequest) {
                     <p>Gender: ${body.gender}</p>
                     <p>Phone Number: ${body.phoneNumber}</p>
                     <p>Appointment Date: ${body.appointmentDate}</p>
+                    <p>Appointment Date: ${body.appointmentTime}</p>
                     <p>Complaints: ${body.complaints}</p>
                 `;
             } else {

@@ -8,6 +8,7 @@ export interface IAppointment extends Document {
   email: string;
   phoneNumber: string;
   appointmentDate: string;
+  appointmentTime: string;
   complaints: string;
   status: {
     type: String,
@@ -24,6 +25,7 @@ const appointmentSchema = new Schema({
   email: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   appointmentDate: { type: String, required: true },
+  appointmentTime: {type: String , required: true},
   complaints: { type: String, required: true },
 });
 

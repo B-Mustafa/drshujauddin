@@ -41,72 +41,108 @@ const AppointmentsPage: React.FC = () => {
 
   const handleAccept = async (appointmentId: string) => {
     try {
-      const response = await fetch('/api/appointments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'accept',
-          appointmentId: appointmentId,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const data = await response.json();
-      console.log('Appointment accepted:', data);
-      toast.success('Appointment accepted successfully!');
-  
-      // Update the appointment's action state
-      setAppointmentActions(prev => ({ ...prev, [appointmentId]: 'accept' }));
-  
-      // Verify state update
-      console.log('Updated appointmentActions state:', appointmentActions);
+       const appointment = appointments.find(appointment => appointment._id === appointmentId);
+       if (!appointment) {
+         throw new Error('Appointment not found');
+       }
+   
+       const response = await fetch('/api/appointments', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           action: 'accept',
+           appointmentId: appointmentId,
+          
+           ...appointment,
+         }),
+       });
+   
+       if (!response.ok) {
+         throw new Error('Network response was not ok');
+       }
+   
+       const data = await response.json();
+       
+       toast.success('Appointment accepted successfully!');
+   
+    
+       setAppointmentActions(prev => ({ ...prev, [appointmentId]: 'accept' }));
+   
+      
     } catch (error) {
-      console.error('Error:', error);
-      toast.error('Failed to accept appointment.');
+       console.error('Error:', error);
+       toast.error('Failed to accept appointment.');
     }
-  };
-
-  const handleDecline = async (appointmentId: string) => {
+   };
+   
+   const handleDecline = async (appointmentId: string) => {
     try {
-      const response = await fetch('/api/appointments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'decline',
-          appointmentId: appointmentId,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const data = await response.json();
-      console.log('Appointment declined:', data);
-      toast.error('Appointment declined successfully!');
-  
-      // Update the appointment's action state
-      setAppointmentActions(prev => ({ ...prev, [appointmentId]: 'decline' }));
-  
-      // Verify state update
-      console.log('Updated appointmentActions state:', appointmentActions);
+       const appointment = appointments.find(appointment => appointment._id === appointmentId);
+       if (!appointment) {
+         throw new Error('Appointment not found');
+       }
+   
+       const response = await fetch('/api/appointments', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           action: 'decline',
+           appointmentId: appointmentId,
+           // Include the full appointment data
+           ...appointment,
+         }),
+       });
+   
+       if (!response.ok) {
+         throw new Error('Network response was not ok');
+       }
+   
+       const data = await response.json();
+       toast.error('Appointment declined successfully!');
+   
+       // Update the appointment's action state
+       setAppointmentActions(prev => ({ ...prev, [appointmentId]: 'decline' }));
+   
+       
     } catch (error) {
-      console.error('Error:', error);
-      toast.error('Failed to decline appointment.');
+       console.error('Error:', error);
+       toast.error('Failed to decline appointment.');
     }
-  };
+   };
+
+  const handleDelete = async (appointmentId: string) => {
+    try {
+       const response = await fetch(`/api/deleteAppointment?id=${appointmentId}`, {
+         method: 'DELETE',
+       });
+   
+       if (!response.ok) {
+         throw new Error('Failed to delete appointment data');
+       }
+   
+       // Directly filter out the appointment to be deleted from the current state
+       const updatedAppointments = appointments.filter(appointment => appointment._id !== appointmentId);
+       setAppointments(updatedAppointments);
+   
+       // Optionally, show a success message
+       toast.success('Appointment deleted successfully!');
+    } catch (error) {
+       console.error('Error deleting appointment data:', error);
+       // Optionally, show an error message
+       toast.error('An error occurred while deleting the appointment.');
+    }
+   };
+   
+  
 
   return (
-    <>
+    <main className='bg-dark-background text-dark-text h-screen'>
     {/* <Navbar isAdminRoute={true}/> */}
-    <div className="container mx-auto px-4 bg-dark-background text-dark-text h-screen">
+    <div className="container mx-auto px-4 ">
       <h1 className="text-2xl font-bold mb-4">Appointments</h1>
       {isAuthenticated ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -130,6 +166,9 @@ const AppointmentsPage: React.FC = () => {
                 <span className="font-semibold">Date :</span> {appointment.appointmentDate}
               </p>
               <p className="text-dark-text">
+                <span className="font-semibold">Date :</span> {appointment.appointmentTime}
+              </p>
+              <p className="text-dark-text">
                 <span className="font-semibold">Complaints :</span> {appointment.complaints}
               </p>
               {appointmentActions[appointment._id] !== 'accept' && (
@@ -144,6 +183,7 @@ const AppointmentsPage: React.FC = () => {
               {appointmentActions[appointment._id] === 'decline' && (
                 <span className="bg-red-500 text-white px-4 py-2 rounded-lg">Declined</span>
               )}
+               <button onClick={() => handleDelete(appointment._id)} className="bg-red-500 text-white px-4 py-2 rounded-lg ml-2">Delete</button>
             </div>
           ))}
         </div>
@@ -151,7 +191,7 @@ const AppointmentsPage: React.FC = () => {
         <p>You are not authenticated</p>
       )}
     </div>
-    </>
+    </main>
   );
 };
 
