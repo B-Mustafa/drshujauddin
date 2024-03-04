@@ -216,12 +216,13 @@ const handleConfirmDelete = async () => {
           ))}
           {isDeleteConfirmationOpen && (
             <DeleteConfirmation
-              isOpen={isDeleteConfirmationOpen}
-              onConfirm={handleConfirmDelete}
-              onClose={handleCancelDelete}
-              title="Confirm Deletion"
-              children={<p>Are you sure you want to delete this record?</p>}
-            />
+            isOpen={isDeleteConfirmationOpen}
+            onConfirm={handleConfirmDelete}
+            onClose={handleCancelDelete}
+            title="Confirm Deletion"
+           >
+            <p>Are you sure you want to delete this record?</p>
+           </DeleteConfirmation>
           )}
         </div>
       ) : (

@@ -104,40 +104,6 @@ function Patients() {
     setEditFormData({ ...filteredConsultingData[index] });
   };
 
-//   const handleDelete = async (index: number) => {
-
-//  const confirmation = window.confirm("Are you sure you want to delete this record?");
-//  if (!confirmation) {
-//     return; // Exit the function if the user cancels the deletion
-//  }
-
-//  try {
-//     // Get the ID of the item to delete
-//     const idToDelete = consultingData[index]._id;
-
-//     // Send a DELETE request to the server
-//     const response = await fetch(`/api/deletePatient?id=${idToDelete}`, {
-//       method: 'DELETE',
-//     });
-
-//     // Check if the request was successful
-//     if (!response.ok) {
-//       throw new Error('Failed to delete patient data');
-//     }
-
-//     // If successful, remove the item from the local state
-//     const updatedConsultingData = consultingData.filter((_, i) => i !== index);
-//     setConsultingData(updatedConsultingData);
-
-//     // Optionally, show a success message
-//     toast.success("Record deleted successfully!");
-//  } catch (error) {
-//     console.error('Error deleting patient data:', error);
-//     // Optionally, show an error message
-//     toast.error("An error occurred while deleting the record.");
-//  }
-// };
-
 
   const handleDelete = (index: number) => {
     setItemToDeleteIndex(index);
@@ -312,12 +278,13 @@ function Patients() {
           )}
           {isDeleteConfirmationOpen && (
             <DeleteConfirmation
-              isOpen={isDeleteConfirmationOpen}
-              onConfirm={handleConfirmDelete}
-              onClose={handleCancelDelete}
-              title="Confirm Deletion"
-              children={<p>Are you sure you want to delete this record?</p>}
-            />
+            isOpen={isDeleteConfirmationOpen}
+            onConfirm={handleConfirmDelete}
+            onClose={handleCancelDelete}
+            title="Confirm Deletion"
+           >
+            <p>Are you sure you want to delete this record?</p>
+           </DeleteConfirmation>
           )}
         </div>
       ) : (

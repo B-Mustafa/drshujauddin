@@ -24,8 +24,8 @@ function AdminLogin() {
     }
 
   return (
-    <div className='h-screen  flex justify-center items-center'>
-      <div className='w-[500px] shadow-md rounded-lg p-5'>
+    <div className='bg-dark-background text-dark-text h-screen  flex justify-center items-center'>
+      <div className='w-[500px] shadow-md rounded-lg p-5 border border-white'>
         <h1 className='text-xl font-bold'>Admin Login</h1>
         <p>Welcome Back</p>
         <form onSubmit={handleSubmit}>
@@ -36,7 +36,7 @@ function AdminLogin() {
             <input 
                 type="email" 
                 placeholder='Enter email' 
-                className='w-full border outline-blue-400 rounded-md p-2 h-10'
+                className='w-full bg-dark-background border outline-blue-400 rounded-md p-2 h-10'
                 onChange={(e) => setAuthState({...authState ,
                 email:e.target.value})}
             />
@@ -48,7 +48,7 @@ function AdminLogin() {
                 <input 
                  type="password"
                  placeholder='Enter password' 
-                 className='w-full border outline-blue-400 rounded-md p-2 h-10'
+                 className='w-full bg-dark-background border outline-blue-400 rounded-md p-2 h-10'
                  onChange={(e) => setAuthState({...authState ,
                     password:e.target.value})}
                 />
