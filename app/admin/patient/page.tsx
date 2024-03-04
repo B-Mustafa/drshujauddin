@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import { getSession } from 'next-auth/react';
 import getFormattedDate from '@/lib/getFormattedDate';
 import toast from 'react-hot-toast';
+import DeleteConfirmation from '@/components/DeleteConfirmation';
 
 interface ConsultingData { 
   _id: string; 
@@ -26,6 +27,7 @@ function Patients() {
   const [loadedDataCount, setLoadedDataCount] = useState<number>(9);
   const [editIndex, setEditIndex] = useState<number>(-1);
   const [deleteIndex , setDeleteIndex] = useState<number>(-1);
+
   const [deleteFormData, setDeleteFormData] = useState<ConsultingData>({
     _id: '',
     firstName: '',
@@ -50,6 +52,9 @@ function Patients() {
     prescription: '',
     consultingDate: '',
   });
+
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState<boolean>(false);
+  const [itemToDeleteIndex, setItemToDeleteIndex] = useState<number | null>(null);
 
   useEffect(() => {
     checkAuthentication();
@@ -99,32 +104,80 @@ function Patients() {
     setEditFormData({ ...filteredConsultingData[index] });
   };
 
-  const handleDelete = async (index: number) => {
-    try {
-       // Get the ID of the item to delete
-       const idToDelete = consultingData[index]._id;
+//   const handleDelete = async (index: number) => {
+
+//  const confirmation = window.confirm("Are you sure you want to delete this record?");
+//  if (!confirmation) {
+//     return; // Exit the function if the user cancels the deletion
+//  }
+
+//  try {
+//     // Get the ID of the item to delete
+//     const idToDelete = consultingData[index]._id;
+
+//     // Send a DELETE request to the server
+//     const response = await fetch(`/api/deletePatient?id=${idToDelete}`, {
+//       method: 'DELETE',
+//     });
+
+//     // Check if the request was successful
+//     if (!response.ok) {
+//       throw new Error('Failed to delete patient data');
+//     }
+
+//     // If successful, remove the item from the local state
+//     const updatedConsultingData = consultingData.filter((_, i) => i !== index);
+//     setConsultingData(updatedConsultingData);
+
+//     // Optionally, show a success message
+//     toast.success("Record deleted successfully!");
+//  } catch (error) {
+//     console.error('Error deleting patient data:', error);
+//     // Optionally, show an error message
+//     toast.error("An error occurred while deleting the record.");
+//  }
+// };
+
+
+  const handleDelete = (index: number) => {
+    setItemToDeleteIndex(index);
+    setIsDeleteConfirmationOpen(true);
+  }
+
+  const handleConfirmDelete = async () => {
+    if (itemToDeleteIndex !== null) {
+       try {
+         // Perform the deletion logic here
+         const idToDelete = consultingData[itemToDeleteIndex]._id;
+         const response = await fetch(`/api/deletePatient?id=${idToDelete}`, {
+           method: 'DELETE',
+         });
    
-       // Send a DELETE request to the server
-       const response = await fetch(`/api/deletePatient?id=${idToDelete}`, {
-         method: 'DELETE',
-       });
+         if (!response.ok) {
+           throw new Error('Failed to delete patient data');
+         }
    
-       // Check if the request was successful
-       if (!response.ok) {
-         throw new Error('Failed to delete patient data');
+         // If successful, remove the item from the local state
+         const updatedConsultingData = consultingData.filter((_, i) => i !== itemToDeleteIndex);
+         setConsultingData(updatedConsultingData);
+   
+         // Optionally, show a success message
+         toast.success("Record deleted successfully!");
+       } catch (error) {
+         console.error('Error deleting patient data:', error);
+         // Optionally, show an error message
+         toast.error("An error occurred while deleting the record.");
+       } finally {
+         // Close the modal and reset the state
+         setIsDeleteConfirmationOpen(false);
+         setItemToDeleteIndex(null);
        }
-   
-       // If successful, remove the item from the local state
-       const updatedConsultingData = consultingData.filter((_, i) => i !== index);
-       setConsultingData(updatedConsultingData);
-   
-       // Optionally, show a success message
-       toast.success("Record deleted successfully!");
-    } catch (error) {
-       console.error('Error deleting patient data:', error);
-       // Optionally, show an error message
-       toast.error("An error occurred while deleting the record.");
     }
+   };
+
+   const handleCancelDelete = () => {
+    setIsDeleteConfirmationOpen(false);
+    setItemToDeleteIndex(null);
    };
 
   const handleUpdate = async () => {
@@ -192,7 +245,9 @@ function Patients() {
               <button onClick={() => handleDelete(index)} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold ml-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Delete Record
               </button>
+              
           </div>
+            
           ))}
           </div>
           {loadedDataCount < filteredConsultingData.length && (
@@ -204,44 +259,44 @@ function Patients() {
           )}
           {editIndex !== -1 && (
             <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex justify-center items-center">
-              <div className="bg-white p-4 rounded-lg max-w-lg max-h-full overflow-auto">
+              <div className="bg-dark-background p-4 rounded-lg max-w-lg max-h-full overflow-auto">
                 {/* Edit form fields */}
                 <h2 className="text-xl font-bold mb-2">Edit Patient</h2>
                 <label className="block mb-2">
                   First Name:
-                  <input type="text" value={editFormData.firstName} onChange={(e) => setEditFormData({ ...editFormData, firstName: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.firstName} onChange={(e) => setEditFormData({ ...editFormData, firstName: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Last Name:
-                  <input type="text" value={editFormData.lastName} onChange={(e) => setEditFormData({ ...editFormData, lastName: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.lastName} onChange={(e) => setEditFormData({ ...editFormData, lastName: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Gender:
-                  <input type="text" value={editFormData.gender} onChange={(e) => setEditFormData({ ...editFormData, gender: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.gender} onChange={(e) => setEditFormData({ ...editFormData, gender: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Age:
-                  <input type="text" value={editFormData.age} onChange={(e) => setEditFormData({ ...editFormData, age: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.age} onChange={(e) => setEditFormData({ ...editFormData, age: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Phone Number:
-                  <input type="text" value={editFormData.phoneNumber } onChange={(e) => setEditFormData({ ...editFormData, phoneNumber: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.phoneNumber } onChange={(e) => setEditFormData({ ...editFormData, phoneNumber: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Email:
-                  <input type="text" value={editFormData.email } onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.email } onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Consulting Date:
-                  <input type="text" value={editFormData.consultingDate } onChange={(e) => setEditFormData({ ...editFormData, consultingDate: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.consultingDate } onChange={(e) => setEditFormData({ ...editFormData, consultingDate: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Complaints:
-                  <input type="text" value={editFormData.complaints } onChange={(e) => setEditFormData({ ...editFormData, complaints: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.complaints } onChange={(e) => setEditFormData({ ...editFormData, complaints: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Prescription:
-                  <input type="text" value={editFormData.prescription } onChange={(e) => setEditFormData({ ...editFormData, prescription: e.target.value })} className="border border-gray-300 rounded-lg p-2 w-full" />
+                  <input type="text" value={editFormData.prescription } onChange={(e) => setEditFormData({ ...editFormData, prescription: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 
                 <div className="flex justify-between">
@@ -254,6 +309,15 @@ function Patients() {
                 </div>
               </div>
             </div>
+          )}
+          {isDeleteConfirmationOpen && (
+            <DeleteConfirmation
+              isOpen={isDeleteConfirmationOpen}
+              onConfirm={handleConfirmDelete}
+              onClose={handleCancelDelete}
+              title="Confirm Deletion"
+              children={<p>Are you sure you want to delete this record?</p>}
+            />
           )}
         </div>
       ) : (

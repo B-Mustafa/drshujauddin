@@ -107,52 +107,9 @@ function constructEmailHTML(body: any, action: string) {
       <p>Gender: ${body.gender}</p>
       <p>Phone Number: ${body.phoneNumber}</p>
       <p>Appointment Date: ${body.appointmentDate}</p>
+      <p>Appointment Time: ${body.appointmentTime}</p>
       <p>Complaints: ${body.complaints}</p>
   `;
 }
 
-export async function DELETE(req: NextRequest) {
-  try {
-     await connect(); // Ensure this connects to your database
- 
-     const urlParts = req.url?.split('?');
-     const queryParameters = new URLSearchParams(urlParts ? urlParts[1] : '');
-     const id = queryParameters.get('id');
- 
-     if (!id || typeof id !== 'string') {
-       return new NextResponse(JSON.stringify({ error: 'Invalid appointment ID' }), {
-         status: 400,
-         headers: {
-           'Content-Type': 'application/json',
-         },
-       });
-     }
- 
-     const deleteAppointment = await Appointment.findByIdAndDelete(id);
- 
-     if (!deleteAppointment) {
-       return new NextResponse(JSON.stringify({ error: 'Appointment not found' }), {
-         status: 404,
-         headers: {
-           'Content-Type': 'application/json',
-         },
-       });
-     }
- 
-     return new NextResponse(JSON.stringify({ message: 'Appointment deleted successfully' }), {
-       status: 200,
-       headers: {
-         'Content-Type': 'application/json',
-       },
-     });
-  } catch (error) {
-     console.error('Error deleting appointment:', error);
-     return new NextResponse(JSON.stringify({ error: 'Error deleting appointment' }), {
-       status: 500,
-       headers: {
-         'Content-Type': 'application/json',
-       },
-     });
-  }
- }
- 
+

@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
                     <p>Gender: ${body.gender}</p>
                     <p>Phone Number: ${body.phoneNumber}</p>
                     <p>Appointment Date: ${body.appointmentDate}</p>
-                    <p>Appointment Date: ${body.appointmentTime}</p>
+                    <p>Appointment Time: ${body.appointmentTime}</p>
                     <p>Complaints: ${body.complaints}</p>
                 `;
             } else if (body.action === 'decline') {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
                     <p>Gender: ${body.gender}</p>
                     <p>Phone Number: ${body.phoneNumber}</p>
                     <p>Appointment Date: ${body.appointmentDate}</p>
-                    <p>Appointment Date: ${body.appointmentTime}</p>
+                    <p>Appointment Time: ${body.appointmentTime}</p>
                     <p>Complaints: ${body.complaints}</p>
                 `;
             } else {
@@ -64,6 +64,7 @@ export async function POST(request: NextRequest) {
                     <p>Gender: ${body.gender}</p>
                     <p>Phone Number: ${body.phoneNumber}</p>
                     <p>Appointment Date: ${body.appointmentDate}</p>
+                    <p>Appointment Time: ${body.appointmentTime}</p>
                     <p>Complaints: ${body.complaints}</p>
                 `;
             }
@@ -72,10 +73,10 @@ export async function POST(request: NextRequest) {
                 from: 'bhikhapurmustafa@mustafadev.me',
                 to: recipientEmail,
                 subject: emailSubject,
-                html: emailHTML // Use the constructed HTML string based on the action
+                html: emailHTML 
             });
 
-            // If the action is 'accept' or 'decline', update the appointment status in the database
+            
             if (body.action === 'accept' || body.action === 'decline') {
                 const appointment = await Appointment.findById(body.appointmentId);
                 if (appointment) {
@@ -83,12 +84,12 @@ export async function POST(request: NextRequest) {
                     await appointment.save();
                 }
             } else {
-                // If the action is not 'accept' or 'decline', create a new appointment
+              
                 const newAppointment = new Appointment(body);
                 await newAppointment.save();
             }
 
-            // Return a NextResponse with the data
+       
             return new NextResponse(JSON.stringify({ data }), {
                 status:  200,
                 headers: {
@@ -96,7 +97,7 @@ export async function POST(request: NextRequest) {
                 },
             });
         } catch (error: any) {
-            // Return a NextResponse with the error message
+           
             return new NextResponse(JSON.stringify({ error: error.message }), {
                 status:  500,
                 headers: {
@@ -105,7 +106,7 @@ export async function POST(request: NextRequest) {
             });
         }
     } else {
-        // Return a NextResponse with a  405 status for unsupported methods
+   
         return new NextResponse(null, { status:  405 });
     }
 }

@@ -38,10 +38,10 @@ export default function Home() {
             alt="Banner Image Homeopathy"
             layout="fill"
             objectFit="cover"
-            className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent absolute top-0 left-0 z-0 opacity-70 "
+            className=" absolute top-0 left-0 z-0 opacity-70 "
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
           />
-          <div className="hero-content-container flex flex-col items-center justify-center text-center relative z-10">
+          <div className="hero-content-container flex flex-col items-center justify-center text-center relative ">
             <h1 className="text-5xl text-dark-text font-bold mb-6">Welcome to Our Homeopathy Center</h1>
             <p className="text-lg text-dark-text mb-8">Healing naturally, one person at a time.</p>
             <Button onClick={openModal} className="bg-dark-primary text-white px-8 py-4 rounded-md cursor-pointer">Book Appointment</Button>

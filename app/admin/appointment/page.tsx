@@ -6,11 +6,16 @@ import { getSession } from 'next-auth/react';
 import { CustomSession } from '@/app/api/auth/[...nextauth]/options';
 import toast from 'react-hot-toast';
 import Navbar from '@/components/Navbar';
+import DeleteConfirmation from '@/components/DeleteConfirmation';
 
 const AppointmentsPage: React.FC = () => {
   const [appointments, setAppointments] = useState<IAppointment[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [appointmentActions, setAppointmentActions] = useState<{ [key: string]: 'accept' | 'decline' | 'none' }>({});
+
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState<boolean>(false);
+  const [itemToDeleteIndex, setItemToDeleteIndex] = useState<number | null>(null);
+
 
   useEffect(() => {
     fetchAppointments();
@@ -114,27 +119,44 @@ const AppointmentsPage: React.FC = () => {
     }
    };
 
-  const handleDelete = async (appointmentId: string) => {
-    try {
-       const response = await fetch(`/api/deleteAppointment?id=${appointmentId}`, {
+const handleConfirmDelete = async () => {
+  if (itemToDeleteIndex !== null) {
+     try {
+      
+       const idToDelete = appointments[itemToDeleteIndex]._id;
+       const response = await fetch(`/api/deleteAppointment?id=${idToDelete}`, {
          method: 'DELETE',
        });
-   
+ 
        if (!response.ok) {
          throw new Error('Failed to delete appointment data');
        }
-   
-       // Directly filter out the appointment to be deleted from the current state
-       const updatedAppointments = appointments.filter(appointment => appointment._id !== appointmentId);
+ 
+       
+       const updatedAppointments = appointments.filter((_, i) => i !== itemToDeleteIndex);
        setAppointments(updatedAppointments);
-   
-       // Optionally, show a success message
-       toast.success('Appointment deleted successfully!');
-    } catch (error) {
+ 
+       toast.success("Appointment deleted successfully!");
+     } catch (error) {
        console.error('Error deleting appointment data:', error);
-       // Optionally, show an error message
-       toast.error('An error occurred while deleting the appointment.');
-    }
+       toast.error("An error occurred while deleting the appointment.");
+     } finally {
+       setIsDeleteConfirmationOpen(false);
+       setItemToDeleteIndex(null);
+     }
+  }
+ };
+ 
+ const handleDelete = (appointmentId: string) => {
+  const indexToDelete = appointments.findIndex(appointment => appointment._id === appointmentId);
+  if (indexToDelete !== -1) {
+     setItemToDeleteIndex(indexToDelete);
+     setIsDeleteConfirmationOpen(true);
+  }
+ };
+   const handleCancelDelete = () => {
+    setIsDeleteConfirmationOpen(false);
+    setItemToDeleteIndex(null);
    };
    
   
@@ -166,26 +188,41 @@ const AppointmentsPage: React.FC = () => {
                 <span className="font-semibold">Date :</span> {appointment.appointmentDate}
               </p>
               <p className="text-dark-text">
-                <span className="font-semibold">Date :</span> {appointment.appointmentTime}
+                <span className="font-semibold">Time :</span> {appointment.appointmentTime}
               </p>
               <p className="text-dark-text">
                 <span className="font-semibold">Complaints :</span> {appointment.complaints}
               </p>
-              {appointmentActions[appointment._id] !== 'accept' && (
-              <button onClick={() => handleAccept(appointment._id)} className="bg-green-500 text-white px-4 py-2 rounded-lg">Accept</button>
-              )}
-              {appointmentActions[appointment._id] === 'accept' && (
-              <span className="bg-green-500 text-white px-4 py-2 rounded-lg">Accepted</span>
-              )}
-              {appointmentActions[appointment._id] !== 'decline' && (
-              <button onClick={() => handleDecline(appointment._id)} className="bg-red-500 text-white px-4 py-2 rounded-lg ml-2">Decline</button>
-              )}
-              {appointmentActions[appointment._id] === 'decline' && (
-                <span className="bg-red-500 text-white px-4 py-2 rounded-lg">Declined</span>
-              )}
+              {appointment.status !== 'accepted' && (
+              <button
+                onClick={() => handleAccept(appointment._id)}
+                className='bg-green-500 text-dark-text px-4 py-2 rounded-lg ml-2'
+                disabled={appointmentActions[appointment._id] === 'accept'}
+              >
+                Accept
+              </button>
+            )}
+            {appointment.status !== 'declined' && (
+              <button
+                onClick={() => handleDecline(appointment._id)}
+                className='bg-red-500 text-dark-text px-4 py-2 rounded-lg ml-2'
+                disabled={appointmentActions[appointment._id] === 'decline'}
+              >
+                Decline
+              </button>
+            )}
                <button onClick={() => handleDelete(appointment._id)} className="bg-red-500 text-white px-4 py-2 rounded-lg ml-2">Delete</button>
             </div>
           ))}
+          {isDeleteConfirmationOpen && (
+            <DeleteConfirmation
+              isOpen={isDeleteConfirmationOpen}
+              onConfirm={handleConfirmDelete}
+              onClose={handleCancelDelete}
+              title="Confirm Deletion"
+              children={<p>Are you sure you want to delete this record?</p>}
+            />
+          )}
         </div>
       ) : (
         <p>You are not authenticated</p>

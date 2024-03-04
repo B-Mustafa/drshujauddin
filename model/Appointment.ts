@@ -10,11 +10,7 @@ export interface IAppointment extends Document {
   appointmentDate: string;
   appointmentTime: string;
   complaints: string;
-  status: {
-    type: String,
-    enum: ['pending', 'accepted', 'declined'],
-    default: 'pending',
-  },
+  status: 'pending' | 'accepted' | 'declined';
 }
 
 const appointmentSchema = new Schema({
@@ -27,6 +23,7 @@ const appointmentSchema = new Schema({
   appointmentDate: { type: String, required: true },
   appointmentTime: {type: String , required: true},
   complaints: { type: String, required: true },
+
 });
 
 const Appointment: Model<IAppointment> = mongoose.models.Appointment || mongoose.model<IAppointment>('Appointment', appointmentSchema);
