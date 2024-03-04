@@ -31,7 +31,7 @@ function Navbar({ isAdminRoute }: NavbarProps) {
   }, [handleNav, menuOpen]);
 
   return (
-    <nav className='sticky w-full h-24 shadow-[#fff] bg-dark-background'>
+    <nav className='sticky w-full h-24 shadow-[#fff] bg-dark-background z-10'>
       <div className='flex justify-between items-center h-full w-full px-4 2xl:px-16 '>
         <div className='flex items-center p-3 text-xl '>
           <Link href={isAdminRoute ? '/admin' : '/'}>
