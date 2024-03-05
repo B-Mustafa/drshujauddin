@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
+import toast from 'react-hot-toast';
+import { sendEmail } from '@/actions/EmailSend';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -10,9 +12,9 @@ function Contact() {
     message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,14 +33,13 @@ function Contact() {
           <div>
             <h1 className="text-4xl font-bold mb-6 text-center text-blue-500">Contact Details</h1>
             <div className="text-center mt-4">
-              <p>123 Main Street, London, UK</p>
-              <p>Phone: +123 456 7890</p>
-              <p>Email: info@example.com</p>
+              <p>Address: Gujarat , Godhra-389001</p>
+              <p>Email: info@sujauddin.com</p>
             </div>
           </div>
           {/* Google Maps Iframe */}
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253414.24408216558!2d-0.24168195788294994!3d51.5287718413816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605c28617fc4d%3A0x6ac715bfab69f34c!2sLondon%2C%20UK!5e0!3m2!1sen!2sus!4v1630732959284!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14715.190886275966!2d73.6118983!3d22.7728869!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39609b002af539a1%3A0x501102952f4aba80!2sSaifee%20Homeopathic%20Clinic!5e0!3m2!1sen!2sin!4v1709661420914!5m2!1sen!2sin"
             width="100%"
             height="300"
             style={{ border: 0 }}
@@ -53,50 +54,36 @@ function Contact() {
           {/* Form */}
           <div className="md:col-span-1">
             <h1 className="text-4xl font-bold mb-6 text-center text-blue-500">Get in Touch</h1>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 placeholder-gray-500"
-                placeholder="Your Name"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 placeholder-gray-500"
-                placeholder="Your Email"
-                required
-              />
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 placeholder-gray-500"
-                placeholder="Subject"
-                required
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 placeholder-gray-500 resize-none"
-                placeholder="Your Message"
-                rows={5}
-                required
-              />
-              <button
-                type="submit"
-                className="w-full p-3 bg-blue-500 hover:bg-blue-600 transition-colors duration-300 ease-in-out rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-              >
-                Send Message
-              </button>
-            </form>
+            <form
+        className="mt-10 flex flex-col dark:text-black"
+        action={async (formData) => {
+          const { data, error } = await sendEmail(formData);
+
+          if (error) {
+            toast.error(error);
+            return;
+          }
+
+          toast.success("Email sent successfully!");
+        }}
+      >
+        <input
+          className="h-14 px-4 rounded-lg borderBlack bg-dark-background transition-all border border-gray-100  "
+          name="senderEmail"
+          type="email"
+          required
+          maxLength={500}
+          placeholder="Your email"
+        />
+        <textarea
+          className="h-52 my-3 rounded-lg borderBlack p-4 bg-dark-background transition-all border border-gray-10"
+          name="message"
+          placeholder="Your message"
+          required
+          maxLength={5000}
+        />
+        <button type='submit'> Submit </button>
+      </form>
           </div>
         </div>
       </section>
