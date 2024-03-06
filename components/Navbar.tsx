@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import Logo from '@/public/logo.png';
+import Logo from '@/public/logo.jpg';
 import { useEffect, useState } from 'react';
 
 interface NavbarProps {
@@ -38,9 +38,10 @@ function Navbar({ isAdminRoute }: NavbarProps) {
             <Image
               src={Logo}
               alt='Main-Logo'
-              height={200}
-              width={200}
-              className='rounded-lg text-xl font-semibold'
+              height={70}
+              width={70}
+              className=' rounded-full text-xl font-semibold object-cover invert'
+              layout='fixed'
             />
           </Link>
         </div>

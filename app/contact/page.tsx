@@ -68,7 +68,7 @@ function Contact() {
         }}
       >
         <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-14 px-4 rounded-lg borderBlack bg-dark-background border border-gray-100 transition-all "
           name="senderEmail"
           type="email"
           required
@@ -76,13 +76,13 @@ function Contact() {
           placeholder="Your email"
         />
         <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-52 my-3 rounded-lg borderBlack p-4 bg-dark-background border border-gray-100 transition-all"
           name="message"
           placeholder="Your message"
           required
           maxLength={5000}
         />
-        <button type='submit'> Submit </button>
+        <button type='submit' className='bg-dark-primary p-3 rounded-lg hover:bg-[#6b6ebd] transition-all'> Submit </button>
       </form>
           </div>
         </div>

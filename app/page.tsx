@@ -52,17 +52,17 @@ export default function Home() {
           <div className="container mx-auto text-center">
             <h2 className="text-4xl font-bold text-dark-text mb-12">Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="service-card bg-white p-8 rounded-lg shadow-md">
+              <div className="service-card bg-dark-background border border-gray-100 text-dark-text p-8 rounded-lg shadow-md hover:translate-y-2 cursor-pointer transition-all">
                 <h3 className="text-xl font-semibold mb-3">Individualized Treatment</h3>
-                <p className="text-gray-700">Tailored homeopathic treatments for your unique health needs.</p>
+                <p className="text-dark-text">Tailored homeopathic treatments for your unique health needs.</p>
               </div>
-              <div className="service-card bg-white p-8 rounded-lg shadow-md">
+              <div className="service-card bg-dark-background border border-gray-100 text-dark-text p-8 rounded-lg shadow-md hover:translate-y-2 cursor-pointer transition-all">
                 <h3 className="text-xl font-semibold mb-3">Holistic Approach</h3>
-                <p className="text-gray-700">We treat the root cause, not just the symptoms, to promote lasting wellness.</p>
+                <p className="text-dark-text">We treat the root cause, not just the symptoms, to promote lasting wellness.</p>
               </div>
-              <div className="service-card bg-white p-8 rounded-lg shadow-md">
+              <div className="service-card bg-dark-background border border-gray-100 text-dark-text p-8 rounded-lg shadow-md hover:translate-y-2 cursor-pointer transition-all">
                 <h3 className="text-xl font-semibold mb-3">Wellness Programs</h3>
-                <p className="text-gray-700">Comprehensive programs to support your journey to optimal health.</p>
+                <p className="text-dark-text">Comprehensive programs to support your journey to optimal health.</p>
               </div>
             </div>
           </div>
