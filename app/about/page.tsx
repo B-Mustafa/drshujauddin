@@ -67,7 +67,7 @@ const About: React.FC = () => {
               His compassionate approach towards patients, coupled with a deep understanding of homeopathy, makes him a trusted healthcare professional in the community. Dr. Shujauddin is dedicated to providing personalized care to each patient, focusing on holistic healing and well-being.
             </p>
             <p className="text-lg mt-4">
-              Under his leadership, Saifee Homeopathic Clinic has become a beacon of hope for individuals seeking natural and effective treatment options. Dr. Shujauddin's commitment to excellence and patient-centric approach continue to drive the clinic towards its mission of restoring health and vitality to all.
+              Under his leadership, Saifee Homeopathic Clinic has become a beacon of hope for individuals seeking natural and effective treatment options. Dr. Shujauddin&apos;s commitment to excellence and patient-centric approach continue to drive the clinic towards its mission of restoring health and vitality to all.
             </p>
           </div>
 
