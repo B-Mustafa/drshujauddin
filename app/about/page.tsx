@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
-import Profile from '../../public/profile.webp';
+import Profile from '../../public/profile.jpg';
 import Footer from '@/components/Footer';
 import AppointmentModal from '@/components/Modal';
 
@@ -36,7 +36,7 @@ const About: React.FC = () => {
         <main className="flex flex-col items-center justify-center w-full flex-1 px-6 sm:px-20 text-center">
           <div className="flex flex-wrap justify-center items-center mt-6">
             <div className="flex flex-col items-center justify-center m-2">
-              <Image src={Profile} alt="Dr. Shujauddin" className="w-64 h-64 object-cover rounded-lg shadow-lg" />
+              <Image src={Profile} alt="Dr. Shujauddin" className="object-fit w-64 h-64 object-cover rounded-lg shadow-lg" />
               <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mt-4">
                 Dr. Shujauddin Bhikhapurwala
               </h2>

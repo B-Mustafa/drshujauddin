@@ -19,7 +19,7 @@ class Testimonials extends Component<TestimonialsProps> {
         className="bg-dark-background text-dark-text"
       >
         <div>
-          <Image src={Profile} alt="Patient One" />
+    
           <div className="myCarousel">
             <h3>patient One</h3>
             <h4>Developer</h4>
@@ -30,7 +30,7 @@ class Testimonials extends Component<TestimonialsProps> {
         </div>
 
         <div>
-          <Image src={Profile} alt="Patient Two" />
+    
           <div className="myCarousel">
             <h3>Patient Two</h3>
             <h4>Business Man</h4>
@@ -41,7 +41,7 @@ class Testimonials extends Component<TestimonialsProps> {
         </div>
 
         <div>
-          <Image src={Profile}  alt="Patient Three" />
+          
           <div className="myCarousel">
             <h3>Patient 3</h3>
             <h4>Lawyer</h4>
