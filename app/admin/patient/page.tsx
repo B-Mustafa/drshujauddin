@@ -258,11 +258,11 @@ function Patients() {
                 </label>
                 <label className="block mb-2">
                   Complaints:
-                  <input type="text" value={editFormData.complaints } onChange={(e) => setEditFormData({ ...editFormData, complaints: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
+                  <textarea  value={editFormData.complaints } onChange={(e) => setEditFormData({ ...editFormData, complaints: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 <label className="block mb-2">
                   Prescription:
-                  <input type="text" value={editFormData.prescription } onChange={(e) => setEditFormData({ ...editFormData, prescription: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
+                  <textarea  value={editFormData.prescription } onChange={(e) => setEditFormData({ ...editFormData, prescription: e.target.value })} className="bg-dark-background text-dark-text border border-gray-300 rounded-lg p-2 w-full" />
                 </label>
                 
                 <div className="flex justify-between">

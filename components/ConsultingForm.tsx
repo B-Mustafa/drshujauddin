@@ -149,7 +149,7 @@ const ConsultingForm = () => {
           onChange={handleChange} 
           placeholder="Complaints" 
           required 
-          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 " 
         />
       </div>
       <div className="mb-4">
@@ -158,7 +158,7 @@ const ConsultingForm = () => {
           value={formData.prescription} 
           onChange={handleChange} 
           placeholder="Prescription"  
-          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
+          className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 " 
         />
       </div>
       <div className="flex items-center justify-between">

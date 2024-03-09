@@ -22,7 +22,7 @@ function Consulting() {
       }
     } catch (error) {
       console.error('Error checking authentication:', error);
-      // Optionally, handle the error more gracefully
+      
     }
   };
 
