@@ -157,8 +157,7 @@ const ConsultingForm = () => {
           name="prescription" 
           value={formData.prescription} 
           onChange={handleChange} 
-          placeholder="Prescription" 
-          required 
+          placeholder="Prescription"  
           className="w-full p-3 border bg-dark-background border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" 
         />
       </div>

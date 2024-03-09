@@ -7,6 +7,7 @@ export async function GET() {
     try {
       await connect();
       const patient = await Consulting.find({});
+      
       return new NextResponse(JSON.stringify(patient), {
         status:  200,
         headers: {
