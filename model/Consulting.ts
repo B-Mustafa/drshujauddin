@@ -22,7 +22,7 @@ const ConsultingSchema = new Schema({
   phoneNumber: { type: String, required: false },
   consultingDate: { type: Date, default: Date.now },
   complaints: { type: String, required: true },
-  prescription: { type: String, required: true },
+  prescription: { type: String, required: false},
 });
 
 const Consulting: Model<IConsulting> = mongoose.models.Consulting || mongoose.model<IConsulting>('Consulting', ConsultingSchema);
