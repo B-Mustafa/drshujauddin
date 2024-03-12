@@ -1,7 +1,7 @@
 import { connect } from "@/database/mongo.config";
 import Consulting from "@/model/Consulting";
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     try {
@@ -24,3 +24,5 @@ export async function GET() {
       });
     }
   }
+
+

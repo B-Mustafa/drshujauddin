@@ -148,7 +148,7 @@ function Patients() {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`/api/patient?id=${consultingData[editIndex]._id}`, {
+      const response = await fetch(`/api/updatePatient?id=${consultingData[editIndex]._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
