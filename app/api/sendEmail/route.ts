@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
             }
 
             const { data } = await resend.emails.send({
-                from: 'bhikhapurmustafa@mustafadev.me',
+                from: 'Appointment@saifeehomeopathy.in',
                 to: recipientEmail,
                 subject: emailSubject,
                 html: emailHTML 
