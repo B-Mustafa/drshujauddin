@@ -63,11 +63,7 @@ import Footer from '@/components/Footer';
                 <FiGlobe className="mr-2" />
                 <p>Website: drshujauddin.in</p>
               </div>
-              <div className="flex justify-center mt-8 space-x-4">
-                <a href="#" target="_blank" rel="noopener noreferrer"><FiInstagram className="text-2xl text-white hover:text-gray-400" /></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><FiTwitter className="text-2xl text-white hover:text-gray-400" /></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><FiFacebook className="text-2xl text-white hover:text-gray-400" /></a>
-              </div>
+              
             </div>
           </div>
           {/* Get in Touch */}
