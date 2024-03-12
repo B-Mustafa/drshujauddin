@@ -42,8 +42,8 @@ export default function Home() {
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
           />
           <div className="hero-content-container flex flex-col items-center justify-center text-center relative ">
-            <h1 className="text-5xl text-dark-text font-bold mb-6">Welcome to Our Homeopathy Center</h1>
-            <p className="text-lg text-dark-text mb-8">Healing naturally, one person at a time.</p>
+            <h1 className="text-5xl text-dark-text font-bold mb-6">Welcome to Saifee Homeopathic Clinic</h1>
+            <p className="text-lg text-dark-text mb-8">Rapid Gentle Permanent Cure</p>
             <Button onClick={openModal} className="bg-dark-primary text-white px-8 py-4 rounded-md cursor-pointer">Book Appointment</Button>
             <AppointmentModal isOpen={isModalOpen} onRequestClose={closeModal} />
           </div>

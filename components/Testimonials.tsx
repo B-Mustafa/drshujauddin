@@ -35,7 +35,7 @@ class Testimonials extends Component<TestimonialsProps> {
             <h3>Patient Two</h3>
             <h4>Business Man</h4>
             <p>
-            Dr. Shujauddin&apos;s homeopathic remedies have been a game-changer for my allergies. I&apos;ve noticed a marked improvement in my symptoms and have been able to avoid using antihistamines. It&apos;s a more holistic approach to health.
+            Dr. Shujauddin&apos;s homeopathic remedies have been a game-changer for my allergies. I&apos;ve noticed a marked improvement in my symptoms  It&apos;s a more holistic approach to health.
             </p>
           </div>
         </div>
@@ -43,7 +43,7 @@ class Testimonials extends Component<TestimonialsProps> {
         <div>
           
           <div className="myCarousel">
-            <h3>Patient 3</h3>
+            <h3>Patient Three</h3>
             <h4>Lawyer</h4>
             <p>
             I got relieved completely from my back pain after consulting with Dr.Shujauddin
