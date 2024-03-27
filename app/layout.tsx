@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   title: "Saifee Homeopathic Clinic",
   description: "Welcome to Saifee Homeopathic Clinic, where Dr. Shujauddin offers holistic healing with personalized care. Discover natural remedies and alternative medicine for optimal wellness.",
-  keywords: "homeopathic clinic, holistic healing, Dr. Shujauddin, homeopathy treatment, natural remedies, alternative medicine, personalized care, homeopathic remedies, homeopathic doctor, individualized treatment, wellness, health, vitality, balance, non-invasive therapies, alternative healthcare",
+  keywords: "homeopathic clinic, holistic healing, Dr. Shujauddin, homeopathy treatment, natural remedies, alternative medicine, personalized care, homeopathic remedies, homeopathic doctor, individualized treatment, wellness, health, vitality, balance, non-invasive therapies, alternative healthcare , shujauddin bhikhapurwala , bhikhapurwala , sujauddin doctor , doctor bhikhapurwala , homeopathic medicines",
 };
 
 export default function RootLayout({
